@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ravinderjit Singh</title>
+<meta name="description" content="Ravinderjit Singh, MD, PhD. Neurology resident at Mount Sinai working on clinical EEG research and neurotechnology.">
+<meta property="og:title" content="Ravinderjit Singh, MD, PhD">
+<meta property="og:description" content="Neurology resident, EEG researcher, and founder.">
+<meta property="og:image" content="https://ravinderjit-s.github.io/assets/rav.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Public+Sans:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap">
+</head>
+<body>
+<style>
+/* Layout: one reading column; a calm masthead with portrait, then plain sections. */
+:root {
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --ink: #16202a;
+  --muted: #56636f;
+  --rule: #dfe3e7;
+  --accent: #1d4ea8;
+  --err: #b42318;
+  --font-display: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f151b; --surface: #161e26; --ink: #e6ebf0; --muted: #9aa7b3;
+    --rule: #26313b; --accent: #7fa8f2; --err: #f28b82; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f151b; --surface: #161e26; --ink: #e6ebf0; --muted: #9aa7b3;
+  --rule: #26313b; --accent: #7fa8f2; --err: #f28b82; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.65;
+}
+.wrap {
+  max-width: 760px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+nav.top { border-bottom: 1px solid var(--rule); }
+nav.top .wrap { display: flex; flex-wrap: wrap; gap: 6px 22px; padding-block: 14px; font-size: 14px; }
+nav.top a { color: var(--muted); text-decoration: none; }
+nav.top a:hover { color: var(--ink); }
+nav.top .home { color: var(--ink); font-weight: 600; margin-right: auto; }
+
+header.mast { padding-block: 56px 16px; }
+.mast-grid { display: grid; grid-template-columns: 1fr 168px; gap: 36px; align-items: start; }
+.mast-grid > div { min-width: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(36px, 6vw, 50px); line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 18px; text-wrap: balance; }
+.lede { font-size: 19px; color: var(--ink); margin: 0 0 20px; max-width: 34em; }
+.portrait { width: 168px; aspect-ratio: 5 / 7; max-width: 100%; object-fit: cover; border-radius: 4px; display: block; background: var(--rule); }
+.links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 15px; padding: 0; margin: 0; list-style: none; }
+.email { font-family: var(--font-mono); font-size: 14px; color: var(--muted); user-select: all; }
+
+
+section { padding-block: 44px 8px; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 28px; line-height: 1.2; margin: 0 0 20px; text-wrap: balance; }
+h3 { font-size: 17px; font-weight: 650; margin: 0; line-height: 1.4; }
+p { margin: 0 0 14px; }
+.muted { color: var(--muted); }
+
+.focus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+.focus > div { min-width: 0; border-top: 2px solid var(--ink); padding-top: 12px; }
+.focus h3 { margin-bottom: 6px; }
+.focus p { font-size: 15.5px; color: var(--muted); margin: 0; }
+
+.entries { display: grid; gap: 28px; }
+.entry { display: grid; grid-template-columns: 1fr auto; gap: 2px 20px; }
+.entry > * { min-width: 0; }
+.entry .when { font-family: var(--font-mono); font-size: 13px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.entry .where { grid-column: 1 / -1; color: var(--muted); font-size: 15px; }
+.entry .body { grid-column: 1 / -1; margin-top: 6px; }
+.entry .body p:last-child { margin-bottom: 0; }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 12px; color: var(--muted); border: 1px solid var(--rule); border-radius: 3px; padding: 1px 7px; margin-top: 8px; }
+
+ol.pubs { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+ol.pubs li { padding-left: 16px; border-left: 2px solid var(--rule); }
+ol.pubs .ttl { font-weight: 600; }
+ol.pubs .meta { font-size: 15px; color: var(--muted); }
+.me { color: var(--ink); font-weight: 600; }
+
+.edu { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.edu li { display: grid; grid-template-columns: 1fr auto; gap: 0 20px; }
+.edu li > * { min-width: 0; }
+.edu .when { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.edu .where { grid-column: 1 / -1; color: var(--muted); font-size: 15px; }
+
+ul.plain { padding-left: 18px; margin: 0; display: grid; gap: 8px; }
+
+form.msg { display: grid; gap: 14px; margin: 26px 0 22px; max-width: 34em; }
+form.msg label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+form.msg input, form.msg textarea {
+  font: inherit; font-size: 16px; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; width: 100%;
+}
+form.msg textarea { min-height: 140px; resize: vertical; }
+form.msg input:focus-visible, form.msg textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+form.msg .hp { position: absolute; left: -9999px; }
+form.msg button {
+  justify-self: start; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  color: var(--bg); background: var(--ink); border: 0; border-radius: 4px; padding: 10px 20px;
+}
+form.msg button:disabled { opacity: 0.6; cursor: default; }
+form.msg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.status { font-size: 15px; margin: 0; min-height: 1.6em; }
+.status.err { color: var(--err); }
+
+footer { margin-top: 56px; border-top: 1px solid var(--rule); padding-block: 22px 40px; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 620px) {
+  header.mast { padding-block: 36px 4px; }
+  .mast-grid { grid-template-columns: 1fr; gap: 24px; }
+  .portrait { width: 132px; order: -1; }
+  .focus { grid-template-columns: 1fr; }
+  .entry, .edu li { grid-template-columns: 1fr; }
+  .entry .when { padding-top: 0; }
+}
+</style>
+
+<nav class="top" aria-label="Sections">
+  <div class="wrap">
+    <a class="home" href="#top">Ravinderjit Singh</a>
+    <a href="#research">Research</a>
+    <a href="#ventures">Ventures</a>
+    <a href="#publications">Publications</a>
+    <a href="#background">Background</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="mast wrap">
+    <div class="mast-grid">
+      <div>
+        <p class="eyebrow">MD, PhD · Neurology resident · New York City</p>
+        <h1>Ravinderjit Singh</h1>
+        <p class="lede">I'm a neurology resident on the research track at the Icahn School of Medicine at Mount Sinai. I study the brain with scalp recordings like EEG and MEG, and I want to bring new EEG markers into the clinic to improve patient care.</p>
+        <ul class="links">
+          <li><a href="https://scholar.google.com/citations?user=hijUaJIAAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><a href="https://www.linkedin.com/in/ravinderjit-singh-md-phd-87a113b4/">LinkedIn</a></li>
+          <li><a href="https://github.com/Ravinderjit-S">GitHub</a></li>
+        </ul>
+      </div>
+      <img class="portrait" src="assets/rav.jpg" alt="Portrait of Ravinderjit Singh" width="168" height="235">
+    </div>
+
+  </header>
+
+  <section class="wrap" aria-labelledby="focus-h">
+    <h2 id="focus-h">What I work on</h2>
+    <div class="focus">
+      <div>
+        <h3>Neurology</h3>
+        <p>Caring for patients as a neurologist, currently in residency at Mount Sinai.</p>
+      </div>
+      <div>
+        <h3>Neuroscience research</h3>
+        <p>Using EEG and MEG to study the brain and objectively assess neural pathologies.</p>
+      </div>
+      <div>
+        <h3>Entrepreneurship</h3>
+        <p>Turning novel EEG markers into tools that clinicians can use.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" id="research" aria-labelledby="research-h">
+    <h2 id="research-h">Research</h2>
+    <div class="entries">
+      <article class="entry">
+        <h3>Clinical EEG archive and foundation model</h3>
+        <span class="when">2024 – present</span>
+        <span class="where">Clinical Neuro-Informatics Center, Mount Sinai · PI: Benjamin Kummer</span>
+        <div class="body">
+          <p>I extracted Mount Sinai's entire clinical EEG archive and put it in a format researchers can use. I'm now using that archive to build a foundation EEG model that can predict epilepsy from an EEG read as "normal."</p>
+        </div>
+      </article>
+      <article class="entry">
+        <h3>Auditory temporal processing (PhD)</h3>
+        <span class="when">2018 – 2022</span>
+        <span class="where">Systems Neuroscience of Auditory Perception Lab, Purdue · PI: Hari Bharadwaj</span>
+        <div class="body">
+          <p>I studied how the auditory system tracks sound over time, using perceptual testing, EEG, and single-unit recordings. My work focused on temporal processing, auditory binding, and processing differences in neuropsychiatric populations such as autism.</p>
+          <span class="tag">NIH T32 DC016853 · 2 years</span>
+        </div>
+      </article>
+      <article class="entry">
+        <h3>Automating deep brain stimulation programming</h3>
+        <span class="when">2014 – 2016</span>
+        <span class="where">DeWeerth Group, Georgia Tech · PI: Stephen P. DeWeerth</span>
+        <div class="body">
+          <p>Through computational simulations, I developed a black-box optimization approach to automate and improve how DBS devices are programmed.</p>
+          <span class="tag">NIH Computational Neuroscience Training Grant</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="ventures" aria-labelledby="ventures-h">
+    <h2 id="ventures-h">Ventures</h2>
+    <div class="entries">
+      <article class="entry">
+        <h3>ParkOut · Co-founder &amp; CEO</h3>
+        <span class="when">2021 – 2023</span>
+        <span class="where">Indianapolis, IN</span>
+        <div class="body">
+          <p>A peer-to-peer marketplace for event parking, like Airbnb for parking spots. Building it taught me what it takes to start and sustain a company, and I built much of the product: a Flutter mobile app, marketplace payments, and a Firebase cloud back end.</p>
+          <span class="tag">4th place, Purdue Burton D. Morgan Business Model Competition · $7,500</span>
+        </div>
+      </article>
+      <article class="entry">
+        <h3>Lumbar Lookout · Co-inventor</h3>
+        <span class="when">2014 – 2015</span>
+        <span class="where">Georgia Tech</span>
+        <div class="body">
+          <p>A wearable that classifies squat form. We worked out where to place inertial sensors and which features matter, then trained a neural network to label form as good or bad.</p>
+          <span class="tag">Best Overall Idea to Prototype Award, 2015</span>
+        </div>
+      </article>
+      <article class="entry">
+        <h3>CI Hackathon · Team lead</h3>
+        <span class="when">2021</span>
+        <span class="where">Worldwide cochlear implant hackathon</span>
+        <div class="body">
+          <p>Led a two-person team that placed third worldwide with a method to improve cochlear implant sound processing.</p>
+          <span class="tag"><a href="https://cihackathon.com/docs/first_hackathon">3rd place · $1,000 prize</a></span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="publications" aria-labelledby="pubs-h">
+    <h2 id="pubs-h">Selected publications</h2>
+    <ol class="pubs">
+      <li>
+        <div class="ttl"><a href="https://doi.org/10.1038/s42003-023-05361-5">Cortical temporal integration can account for limits of temporal perception: investigations in the binaural system</a></div>
+        <div class="meta"><span class="me">Singh R</span>, Bharadwaj H. <em>Communications Biology</em> 6, 981 (2023).</div>
+      </li>
+      <li>
+        <div class="ttl"><a href="https://doi.org/10.1101/2024.08.11.607503">Efficient modular system identification provides a high-resolution assay of temporal processing and reveals the multilevel effects of attention along the human auditory pathway</a></div>
+        <div class="meta"><span class="me">Singh R</span>, Bharadwaj H. <em>bioRxiv</em> preprint (2024).</div>
+      </li>
+      <li>
+        <div class="ttl">Cortical signatures of auditory object binding in children with autism spectrum disorder are anomalous in concordance with behavior and diagnosis</div>
+        <div class="meta">Bharadwaj H, Mamashli F, Khan S, <span class="me">Singh R</span>, et al. <em>PLoS Biology</em> 20(2), e3001541 (2022).</div>
+      </li>
+      <li>
+        <div class="ttl">Web-based psychoacoustics: hearing screening, infrastructure, and validation</div>
+        <div class="meta">Mok BA, Viswanathan V, Borjigin A, <span class="me">Singh R</span>, Kafi H, Bharadwaj HM. <em>Behavior Research Methods</em> (2023).</div>
+      </li>
+      <li>
+        <div class="ttl">A multi-channel EEG mini-cap can improve reliability for recording brainstem responses in chinchillas</div>
+        <div class="meta">Ginsberg H, <span class="me">Singh R</span>, Bharadwaj H, Heinz MG. <em>Journal of Neuroscience Methods</em> (2023).</div>
+      </li>
+    </ol>
+    <p class="muted" style="margin-top:18px">Recent talks include early EEG biomarkers of post-traumatic epilepsy (Congress of Neurological Surgeons, 2024) and EEG features that separate drug-resistant, well-controlled, and non-epileptic patients (American Epilepsy Society, 2025). Full list on <a href="https://scholar.google.com/citations?user=hijUaJIAAAAJ&amp;hl=en">Google Scholar</a>.</p>
+  </section>
+
+  <section class="wrap" id="background" aria-labelledby="bg-h">
+    <h2 id="bg-h">Background</h2>
+    <ul class="edu">
+      <li><h3>Neurology Residency, Research Track</h3><span class="when">2024 – 2028</span><span class="where">Icahn School of Medicine at Mount Sinai</span></li>
+      <li><h3>M.D., Medical Scientist Training Program</h3><span class="when">2016 – 2024</span><span class="where">Indiana University School of Medicine</span></li>
+      <li><h3>Ph.D., Biomedical Engineering</h3><span class="when">2018 – 2022</span><span class="where">Purdue University · Thesis on sensory processing via EEG</span></li>
+      <li><h3>Applied Management Principles (mini-MBA)</h3><span class="when">2021</span><span class="where">Purdue Krannert School of Management</span></li>
+      <li><h3>B.S., Electrical Engineering, minor in BME</h3><span class="when">2013 – 2016</span><span class="where">Georgia Institute of Technology</span></li>
+    </ul>
+
+    <h3 style="margin-top:34px; margin-bottom:10px">Teaching and leadership</h3>
+    <ul class="plain">
+      <li>Taught the pattern classification module of BME 511, Biomedical Signal Processing, at Purdue (<a href="https://github.com/Ravinderjit-S/Teaching/tree/main/Classification">materials</a>).</li>
+      <li>Founded and led the Auditory Neuroscience Association at Purdue.</li>
+      <li>Vice President, Student Interest Group in Neurology at IU School of Medicine.</li>
+      <li>Member, IT Safety and Regulatory Committee at Mount Sinai.</li>
+    </ul>
+    <p class="muted" style="margin-top:18px">Tools I use: Python, MATLAB, MNE, machine learning, signal processing, Flutter and Dart, Google Cloud.</p>
+  </section>
+
+  <section class="wrap" id="contact" aria-labelledby="contact-h">
+    <h2 id="contact-h">Get in touch</h2>
+    <p>I'm open to research collaborations, clinical EEG projects, and conversations about bringing neurotechnology to patients.</p>
+    <form class="msg" id="msg" action="https://formsubmit.co/ajax/ravinderjit_dsingh@outlook.com" method="post">
+      <label for="f-email">Your email
+        <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      </label>
+      <label for="f-message">Message
+        <textarea id="f-message" name="message" required placeholder="What would you like to talk about?"></textarea>
+      </label>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" id="f-send">Send message</button>
+      <p class="status" id="f-status" role="status"></p>
+    </form>
+    <p class="muted">Or email me directly:</p>
+    <p class="email">ravinderjit_dsingh@outlook.com</p>
+    <ul class="links">
+      <li><a href="https://www.linkedin.com/in/ravinderjit-singh-md-phd-87a113b4/">LinkedIn</a></li>
+      <li><a href="https://scholar.google.com/citations?user=hijUaJIAAAAJ&amp;hl=en">Google Scholar</a></li>
+      <li><a href="https://github.com/Ravinderjit-S">GitHub</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2026 Ravinderjit Singh</div>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('msg');
+  var btn = document.getElementById('f-send');
+  var status = document.getElementById('f-status');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    if (data.get('_honey')) return;
+    data.append('_subject', 'New message from your website');
+    data.append('_template', 'table');
+    data.append('_replyto', data.get('email'));
+    btn.disabled = true;
+    status.className = 'status';
+    status.textContent = 'Sending…';
+    fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: data })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || 'failed'); }); })
+      .then(function () {
+        form.reset();
+        status.textContent = 'Thanks, your message was sent. I\'ll get back to you soon.';
+      })
+      .catch(function () {
+        status.className = 'status err';
+        status.textContent = 'Your message could not be sent. Please try again, or email me at the address below.';
+      })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
